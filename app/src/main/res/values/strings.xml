@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NewsPortugalXML</string>
+    <string name="app_news_portugal">News</string>
+    <string name="hello_blank_fragment">Hello!</string>
+    <string name="popular_news">Popular news</string>
+    <string name="search">Search</string>
+    <string name="musk">Musk invited</string>
+    <string name="description">Description</string>
+    <string name="visit_site">Visit site</string>
+    <string name="fav_news">My favorite news</string>
+</resources>

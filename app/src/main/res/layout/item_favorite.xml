@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginVertical="12dp"
+    android:layout_marginHorizontal="16dp">
+
+    <ImageView
+        android:id="@+id/fav_image"
+        android:layout_width="88dp"
+        android:layout_height="84dp"
+        android:background="@drawable/bg_image_10"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <LinearLayout
+        android:id="@+id/fav_info"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fav_image"
+        android:layout_marginStart="10dp">
+
+        <TextView
+            android:id="@+id/fav_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_grey"
+            android:textSize="12sp"
+            tools:text="Thu, Apr 19 * 20,00 Pm"/>
+
+        <TextView
+            android:id="@+id/fav_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="@color/black_grey"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:fontWeight="700"
+            tools:text="Watch NASA's OSIRIS-REx asteroid probe
+            approach Earth tonight with free telescope livestream -
+            Space.com"/>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/fav_delete"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_delete"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fav_info"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
