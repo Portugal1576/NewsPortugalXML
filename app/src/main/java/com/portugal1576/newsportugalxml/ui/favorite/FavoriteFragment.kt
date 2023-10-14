@@ -37,6 +37,8 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initAdapter()
+        viewModel.getFavoriteNews()
+        favoriteAdapter.notifyDataSetChanged()
 
         favoriteAdapter.setOnClickListener {
             val bundle = bundleOf("article" to it)

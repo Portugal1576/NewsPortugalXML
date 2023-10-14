@@ -32,5 +32,4 @@ class DetailsViewModel @Inject constructor(
         repository.addFavorite(article = article)
         getFavoriteNews()
     }
-
 }

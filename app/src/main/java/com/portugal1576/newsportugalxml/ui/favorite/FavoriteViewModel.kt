@@ -20,7 +20,7 @@ class FavoriteViewModel @Inject constructor(private val repository: NewsReposito
         getFavoriteNews()
     }
 
-    private fun getFavoriteNews() =
+    fun getFavoriteNews() =
         viewModelScope.launch(Dispatchers.IO) {
             val res = repository.getFavoriteArticles()
             favoritesLiveData.postValue(Resourse.Success(res))
