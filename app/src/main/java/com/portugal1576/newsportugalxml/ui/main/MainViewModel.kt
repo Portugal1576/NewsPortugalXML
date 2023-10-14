@@ -4,11 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.portugal1576.newsportugalxml.data.api.NewsRepository
-import com.portugal1576.newsportugalxml.models.Article
 import com.portugal1576.newsportugalxml.models.NewsResponse
 import com.portugal1576.newsportugalxml.utils.Resourse
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,15 +15,13 @@ class MainViewModel @Inject constructor(private val repository: NewsRepository) 
 
     val newsLiveData: MutableLiveData<Resourse<NewsResponse>> = MutableLiveData()
     val newsPage = 1
+    var codeCountry = "us"
 
     init {
-        getNews(
-            "us" +
-                    ""
-        )
+        getNews(codeCountry)
     }
 
-    private fun getNews(countryCode: String) =
+    fun getNews(countryCode: String) =
         viewModelScope.launch {
             newsLiveData.postValue(Resourse.Loading())
             val response = repository.getNews(countryCode = countryCode, pageNumber = newsPage)
@@ -37,8 +33,4 @@ class MainViewModel @Inject constructor(private val repository: NewsRepository) 
                 newsLiveData.postValue(Resourse.Error(message = response.message()))
             }
         }
-
-    fun shareNews(){
-
-    }
 }

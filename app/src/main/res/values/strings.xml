@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">NewsPortugalXML</string>
     <string name="app_news_portugal">News</string>
+    <string name="country_news">USA News</string>
     <string name="hello_blank_fragment">Hello!</string>
     <string name="popular_news">Popular news</string>
     <string name="search">Search</string>

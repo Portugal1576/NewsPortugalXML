@@ -12,7 +12,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
@@ -20,14 +19,13 @@ class MainActivity : AppCompatActivity() {
     private val mBinding get() = _binding!!
     private val navController by lazy { findNavController(R.id.nav_host_fragment) }
 
-
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_splash)
 
         CoroutineScope(Dispatchers.Main).launch {
-            delay(5000)
+            delay(4000)
             _binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(mBinding.root)
             mBinding.bottomNavMenu.setupWithNavController(navController)

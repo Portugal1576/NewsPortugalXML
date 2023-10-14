@@ -38,6 +38,22 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mBinding.flagUs.setOnClickListener {
+            viewModel.getNews("us")
+            mBinding.titleText.text = "USA News"
+        }
+
+        mBinding.flagPt.setOnClickListener {
+            viewModel.getNews("pt")
+            mBinding.titleText.text = "Portugal News"
+
+        }
+
+        mBinding.flagUa.setOnClickListener {
+            viewModel.getNews("ua")
+            mBinding.titleText.text = "Ukraine news"
+        }
+
         initAdapter()
 
         newsAdapter.setOnClickListener {
@@ -47,6 +63,7 @@ class MainFragment : Fragment() {
                 bundle
             )
         }
+
 
         viewModel.newsLiveData.observe(viewLifecycleOwner) { response ->
             when (response) {

@@ -91,8 +91,7 @@ class SearchFragment : Fragment() {
             )
         }
 
-        newsAdapter.setOnShareClickListener {
-                newsItem ->
+        newsAdapter.setOnShareClickListener { newsItem ->
             // Створіть текстовий контент для поділу, наприклад, заголовок і посилання на новину
             val shareText = "Перевір цю новину: ${newsItem.title}\n${newsItem.url}"
 

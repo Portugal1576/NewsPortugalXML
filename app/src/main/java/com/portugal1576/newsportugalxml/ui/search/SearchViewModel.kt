@@ -32,5 +32,4 @@ class SearchViewModel @Inject constructor(private val repository: NewsRepository
                 searchNewsLiveData.postValue(Resourse.Error(message = response.message()))
             }
         }
-
 }

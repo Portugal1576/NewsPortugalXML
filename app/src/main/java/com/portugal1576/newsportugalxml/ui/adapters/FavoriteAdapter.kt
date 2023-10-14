@@ -72,6 +72,7 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteNewsViewHol
     fun setOnDeleteClickListener(listener: (Article) -> Unit) {
         onDeleteClickListener = listener
     }
+
     fun setOnClickListener(listener: (Article) -> Unit) {
         onItemClickListener = listener
     }
