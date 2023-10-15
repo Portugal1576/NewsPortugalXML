@@ -38,20 +38,27 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (viewModel.countryCodeLiveData.value.isNullOrEmpty()) {
+            viewModel.countryCodeLiveData.value = "us" // Встановити значення "us" за замовчуванням
+        }
+
+        viewModel.countryCodeLiveData.observe(viewLifecycleOwner) { countryCode ->
+            updateTitleText(countryCode)
+        }
+
         mBinding.flagUs.setOnClickListener {
+            viewModel.countryCodeLiveData.value = "us"
             viewModel.getNews("us")
-            mBinding.titleText.text = "USA News"
         }
 
         mBinding.flagPt.setOnClickListener {
+            viewModel.countryCodeLiveData.value = "pt"
             viewModel.getNews("pt")
-            mBinding.titleText.text = "Portugal News"
-
         }
 
         mBinding.flagUa.setOnClickListener {
+            viewModel.countryCodeLiveData.value = "ua"
             viewModel.getNews("ua")
-            mBinding.titleText.text = "Ukraine news"
         }
 
         initAdapter()
@@ -89,14 +96,14 @@ class MainFragment : Fragment() {
         newsAdapter.setOnShareClickListener {
                 newsItem ->
             // Створіть текстовий контент для поділу, наприклад, заголовок і посилання на новину
-            val shareText = "Перевір цю новину: ${newsItem.title}\n${newsItem.url}"
+            val shareText = "Check this news: ${newsItem.title}\n${newsItem.url}"
 
             val sendIntent = Intent().apply {
                 action = Intent.ACTION_SEND
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, shareText)
             }
-            startActivity(Intent.createChooser(sendIntent, "Поділитися через"))
+            startActivity(Intent.createChooser(sendIntent, "Share via: "))
         }
     }
 
@@ -111,5 +118,15 @@ class MainFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun updateTitleText(countryCode: String) {
+        val titleText = when (countryCode) {
+            "us" -> "USA News"
+            "pt" -> "Portugal News"
+            "ua" -> "Ukraine News"
+            else -> "Unknown Country"
+        }
+        mBinding.titleText.text = titleText
     }
 }

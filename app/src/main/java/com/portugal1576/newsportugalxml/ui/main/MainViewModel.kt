@@ -15,10 +15,12 @@ class MainViewModel @Inject constructor(private val repository: NewsRepository) 
 
     val newsLiveData: MutableLiveData<Resourse<NewsResponse>> = MutableLiveData()
     val newsPage = 1
-    var codeCountry = "us"
+    val countryCodeLiveData: MutableLiveData<String> = MutableLiveData()
 
     init {
-        getNews(codeCountry)
+        countryCodeLiveData.observeForever { countryCode ->
+            getNews(countryCode)
+        }
     }
 
     fun getNews(countryCode: String) =
